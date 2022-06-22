@@ -1,0 +1,21 @@
+.lesson-available{
+    @apply text-sm text-blue-500 font-medium flex items-center gap-2;
+}
+.lesson-unavailable{
+    @apply text-sm text-orange-500 font-medium flex items-center gap-2;
+}
+.lesson-card-header{
+    @apply flex items-center justify-between;
+}
+.lesson-card-container{
+    @apply rounded border border-gray-500 p-4 mt-2;
+}
+.lesson-title{
+    @apply text-gray-200 mt-5 block;
+}
+.lesson-type{
+    @apply text-xs rounded py-[0.125rem] px-2 text-white border border-green-300 font-bold;
+}
+.lesson-date{
+    @apply text-gray-300;
+}

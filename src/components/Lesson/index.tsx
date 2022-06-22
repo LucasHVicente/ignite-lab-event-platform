@@ -1,12 +1,16 @@
 import { isPast, format } from 'date-fns';
 import { CheckCircle, Lock } from 'phosphor-react'
 import ptBR from 'date-fns/locale/pt-BR'
+
+import './styles.css'
+
 interface LessonProps {
     title: string;
     slug: string;
     availableAt: Date;
     type: 'live' | 'class';
 }
+
 export function Lesson(props: LessonProps){
     const isLessonAvailable = isPast(props.availableAt);
     const availableDateFormatted = format(
@@ -16,29 +20,29 @@ export function Lesson(props: LessonProps){
     )
     return (
         <a href="#">
-            <span className="text-gray-300">
+            <span className="lesson-date">
                 {availableDateFormatted}
             </span>
-            <div className="rounded border border-gray-500 p-4 mt-2">
-                <header className="flex items-center justify-between">
+            <div className="lesson-card-container">
+                <header className="lesson-card-header">
                     {
                         isLessonAvailable ? (
-                            <span className="text-sm text-blue-500 font-medium flex items-center gap-2">
+                            <span className="lesson-available">
                                 <CheckCircle size={20}/>
                                 Conteudo Liberado
                             </span>
                         ):(
-                            <span className="text-sm text-orange-500 font-medium flex items-center gap-2">
+                            <span className="lesson-unavailable">
                                 <Lock size={20}/>
                                 Em breve
                             </span>
                         )
                     }
-                    <span className="text-xs rounded py-[0.125rem] px-2 text-white border border-green-300 font-bold">
+                    <span className="lesson-type">
                         {props.type ==='live'? 'AO VIVO': 'AULA PRÁTICA'}
                     </span>
                 </header>
-                <strong className="text-gray-200 mt-5 block">
+                <strong className="lesson-title">
                     {props.title}
                 </strong>
             </div>
