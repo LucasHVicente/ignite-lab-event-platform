@@ -1,0 +1,6 @@
+.event-container{
+    @apply flex flex-col min-h-screen;
+}
+.event-main-container{
+    @apply flex flex-1;
+}
