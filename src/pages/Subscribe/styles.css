@@ -1,0 +1,34 @@
+.subscribe-container{
+    @apply min-h-screen bg-blur bg-cover bg-no-repeat flex flex-col items-center;
+}
+.subscribe-content-container{
+    @apply w-full max-w-[1100px] flex items-center justify-between mt-20 mx-auto;
+}
+
+.subscribe-submit-button{
+    @apply mt-4 bg-green-500 uppercase py-5 rounded font-bold text-sm hover:bg-green-700 transition-colors disabled:opacity-50 ;
+}
+
+.subscribe-input{
+    @apply bg-gray-900 rounded px-5 h-14;
+}
+
+.subscribe-form-container{
+    @apply p-8 bg-gray-700 border border-gray-500 rounded;
+}
+
+.subscribe-form{
+    @apply flex flex-col gap-2 w-full;
+}
+.subscribe-logo-container{
+    @apply max-w-[640px];
+}
+.subscribe-text{
+    @apply mt-4 text-gray-200 leading-relaxed;
+}
+.subscribe-title{
+    @apply mt-8 text-[2.5rem] leading-tight;
+}
+.subscribe-form-title{
+    @apply text-2xl mb-6 block;
+}

@@ -1,0 +1,18 @@
+.video-aditional-link{
+    @apply bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-colors;
+}
+.aditional-link-icon{
+    @apply bg-green-700 h-full p-6 flex items-center;
+}
+.aditional-link-arrow{
+    @apply h-full p-6 flex items-center;
+}
+.aditional-link-info{
+    @apply py-6 leading-relaxed;
+}
+.link-title{
+    @apply text-2xl;
+}
+.link-text{
+    @apply text-sm text-gray-200 mt-2;
+}

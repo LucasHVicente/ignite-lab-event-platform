@@ -1,0 +1,36 @@
+.video-player-container{
+    @apply bg-black flex justify-center;
+}
+.video-player{
+    @apply h-full w-full max-w-[1100px] max-h-[60vh] aspect-video;
+}
+.lesson-information{
+    @apply p-8 max-w-[1100px] mx-auto;
+}
+.lesson-information-container{
+    @apply flex items-start gap-16;
+}
+.video-title{
+    @apply text-2xl font-bold;
+}
+.video-description{
+    @apply mt-4 text-gray-100 leading-relaxed;
+}
+.teacher-card-container{
+    @apply flex items-center gap-4 mt-6;
+}
+.teacher-image{
+    @apply h-16 w-16 rounded-full border-2 border-blue-500;
+}
+.teacher-name{
+    @apply font-bold text-2xl block;
+}
+.teacher-bio{
+    @apply text-gray-200 text-sm block;
+}
+.aditional-link-container{
+    @apply gap-8 mt-20 grid grid-cols-2;
+}
+.video-buttons{
+    @apply flex flex-col gap-4;
+}
