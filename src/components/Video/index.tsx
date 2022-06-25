@@ -1,9 +1,9 @@
 import { DefaultUi, Player, Youtube } from "@vime/react";
 import { DiscordLogo, Lightning, FileArrowDown, CaretRight, Image } from "phosphor-react";
 import '@vime/core/themes/default.css'
-import { gql, useQuery } from "@apollo/client";
 import { LinkButton } from "../LinkButton";
 import { AditionalLink } from "../AditionalLink";
+import { useGetLessonBySlugQuery } from "../../graphql/generated";
 
 import './styles.css'
 
@@ -11,42 +11,15 @@ interface VideoProps {
     lessonSlug: string;
 }
 
-const GET_LESSON_BY_SLUG_QUERY = gql`
-    query GetLessonBySlug ($slug: String) {
-        lesson(where: {slug: $slug}) {
-            description
-            title
-            videoId
-            teacher {
-                avatarURL
-                bio
-                name
-            }
-        }
-    }
-`
-interface GetLessonBySlugResponse {
-    lesson: {
-        description: string,
-        title: string,
-        videoId: string,
-        teacher: {
-            avatarURL: string,
-            bio: string,
-            name: string,
-        }
-    }
-}
-
 
 export function Video(props: VideoProps){
-    const { data } = useQuery<GetLessonBySlugResponse>(GET_LESSON_BY_SLUG_QUERY, {
+    const { data } = useGetLessonBySlugQuery({
         variables: {
             slug: props.lessonSlug
         }
     })
 
-    if(!data){
+    if(!data || !data.lesson){
         return( 
             <div className="flex-1">
                 <p>Carregando...</p>
@@ -73,21 +46,25 @@ export function Video(props: VideoProps){
                         <p className="video-description">
                             {data.lesson.description}
                         </p>
-                        <div className="teacher-card-container">
-                            <img 
-                                className="teacher-image"
-                                src={data.lesson.teacher.avatarURL} 
-                                alt={data.lesson.teacher.name}
-                            />
-                            <div className="leading-relaxed">
-                                <strong className="teacher-name">
-                                    {data.lesson.teacher.name}
-                                </strong>
-                                <span className="teacher-bio">
-                                    {data.lesson.teacher.bio}
-                                </span>
-                            </div>
-                        </div>
+                        {
+                            data.lesson.teacher && (
+                                <div className="teacher-card-container">
+                                    <img 
+                                        className="teacher-image"
+                                        src={data.lesson.teacher.avatarURL} 
+                                        alt={data.lesson.teacher.name}
+                                    />
+                                    <div className="leading-relaxed">
+                                        <strong className="teacher-name">
+                                            {data.lesson.teacher.name}
+                                        </strong>
+                                        <span className="teacher-bio">
+                                            {data.lesson.teacher.bio}
+                                        </span>
+                                    </div>
+                                </div>
+                            )
+                        }
                     </div>
                     <div className="video-buttons">
                         <LinkButton href="" >
